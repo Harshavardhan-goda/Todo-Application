@@ -130,7 +130,7 @@ app.put("/todos/:todoId/", async (request, response) => {
   }
   const previousTodoQuery = `
     SELECT * FROM todo WHERE id = ${todoId};`;
-  const previousTodo = await db.run(previousTodoQuery);
+  const previousTodo = await db.get(previousTodoQuery);
   const {
     todo = previousTodo.todo,
     priority = previousTodo.priority,
